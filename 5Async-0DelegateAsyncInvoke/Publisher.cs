@@ -61,7 +61,6 @@ namespace _5Async_0DelegateAsyncInvoke
                 }
                     Console.WriteLine("Publisher DoSomeThing...");
             }
-
         }
     }
     public class Subscriber1
