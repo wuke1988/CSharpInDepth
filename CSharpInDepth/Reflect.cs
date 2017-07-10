@@ -8,13 +8,24 @@ namespace CSharpInDepth
 {
    static  class Reflect
     {
-        static void Test()
+       public static void Test()
         {
             string listTypeName = "System.Collections.Generic.List^1";
 
             Type type = Type.GetType(listTypeName);
 
-            Type closedByMethod = type.MakeGenericType(typeof(string));
+            Type closedByName = Type.GetType(listTypeName+"[System.String]");
+
+           
+
+            Type closedByTypeof = typeof(List<>);
+
+
+            //Type closedByMethod = type.MakeGenericType(typeof(string));
+
+            Type closedByMethod = closedByTypeof.MakeGenericType(typeof(string));
+
+            closedByTypeof.GetMethods();
 
             closedByMethod.GetMethods();
            

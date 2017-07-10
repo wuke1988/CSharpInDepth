@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContravarianceDemo.cs" />
     <Compile Include="CountingEnumerable.cs" />
+    <Compile Include="CovarianceDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflect.cs" />
