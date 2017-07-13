@@ -80,5 +80,27 @@ namespace _8Chapter
             }
         }
     }
+    /// <summary>
+    ///   静态字段会在静态类任何静态方法或静态字段调用之前进行初始化
+    ///   所以，在多线程环境下，所有SingleTonDemo3 仅有一个静态实例字段，故而仅有一个实例
+    /// </summary>
+    public sealed class SingleTonDemo3
+    {
+        private static SingleTonDemo3 _instance = new SingleTonDemo3();
+
+        static SingleTonDemo3()
+        {
+        }
+
+        public static SingleTonDemo3 Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+
+    }
 }
 

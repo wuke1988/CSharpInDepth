@@ -10,7 +10,10 @@ namespace _8Chapter
     {
         static void Main(string[] args)
         {
-            InstanceCounter.Demo();
+            //InstanceCounter.Demo();
+
+
+            BeforeFieldInitTest.Test();
 
             Console.ReadLine();
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,39 +9,43 @@ namespace _8Chapter
 {
     /// <summary>
     /// 测试静态字段初始化的执行顺序，以推到出静态的Singleton实现方法
+    /// 静态字段会在静态类任何静态方法或静态字段调用之前进行初始化
     /// </summary>
-    class BeforeFieldInitTest
+    class BeforeFieldInit
     {
 
-        class Test
-        {
-            public static string x = EchoAndReturn("In type initializer");
+        public readonly static string x = EchoAndReturn("In type initializer");
 
-            public static string EchoAndReturn(string x)
-            {
-                Console.WriteLine(x);
-                return x;
-            }
+        static BeforeFieldInit()
+        {
+            Console.WriteLine("static beforefieldinit...");
+        }
+
+        public static string EchoAndReturn(string str)
+        {
+            Console.WriteLine(str);
+            return str;
         }
 
     }
 
-    class BeforeFieldInitTest1
+    public class BeforeFieldInitTest
     {
-
-        class Test
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void Test()
         {
-            public static string x = EchoAndReturn("In type initializer");
+            Console.WriteLine("Starting Main");
+            BeforeFieldInit.EchoAndReturn("Echo!");
+            Console.WriteLine("After echo");
 
-            static Test()
-            { }
-
-            public static string EchoAndReturn(string x)
+            string y = BeforeFieldInit.x;
+            //Use the value just to avoid compiler cleverness
+            if (y != null)
             {
-                Console.WriteLine(x);
-                return x;
+                Console.WriteLine("After field access");
             }
-        }
 
+            Console.ReadLine();
+        }
     }
 }
