@@ -51,8 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DynamicDemo.cs" />
+    <Compile Include="DynamicObjectDemo.cs" />
+    <Compile Include="DynamicObjectDemo2.cs" />
     <Compile Include="DynamicUsageDemo.cs" />
     <Compile Include="ExpandoObjectDemo.cs" />
+    <Compile Include="ExpandoObjectDemo2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PythonScopeDemo.cs" />

@@ -22,8 +22,20 @@ namespace _14_Chapter
             //DynamicUsageDemo.Demo2();
             //DynamicUsageDemo.Demo3();
 
-            ExpandoObjectDemo demo = new ExpandoObjectDemo();
+            //ExpandoObjectDemo demo = new ExpandoObjectDemo();
+            //demo.Demo1();
+
+            ExpandoObjectDemo2 demo = new ExpandoObjectDemo2();
             demo.Demo1();
+
+            DynamicObjectDemoTest demo1 = new DynamicObjectDemoTest();
+            demo1.Demo1();
+            demo1.Demo2();
+            demo1.Demo3();
+
+            DynamicObjectDemo2 demo2 = new DynamicObjectDemo2();
+            demo2.Demo1();
+            
 
             Console.ReadLine();
         }

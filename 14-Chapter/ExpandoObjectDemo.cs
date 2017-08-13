@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace _14_Chapter
     /// IEnumerable<KeyValuePair<string, object>>
     /// IEnumerable
     /// INotifyPropertyChanged
+    /// 参考：http://www.cnblogs.com/Henllyee/archive/2010/06/20/ExpandoObject1.html
     /// </summary>
     public class ExpandoObjectDemo
     {
@@ -27,16 +29,39 @@ namespace _14_Chapter
         public void Demo1()
         {
             dynamic expando = new ExpandoObject();
-            //通过名称存储对象：属性
+           
+            //添加（属性变化）事件
+            ((INotifyPropertyChanged)expando).PropertyChanged += ExpandoObjectDemo_PropertyChanged;
+
+            //添加属性
             expando.First = "Hello World";
-            //通过名称存储对象：方法
-            expando.Method = (Func<int,int>)(x => x + 1);
+            //添加方法
+            expando.Method = (Func<int, int>)(x => x + 1);
+
+            //添加事件
+            expando.SayHello = null;
+            expando.SayHello += new EventHandler(SayHello);
 
             Console.WriteLine(expando.First);
             
             Console.WriteLine(expando.Method(2));
 
-            Console.ReadLine();
+            expando.SayHello(expando,null);
+
+            //移除成员
+            ((IDictionary<string, object>)expando).Remove("SayHello");
+
+        }
+
+        private void SayHello(object sender,EventArgs e)
+        {
+            dynamic obj = sender as dynamic;
+            Console.WriteLine(obj.First+" From Event!");
+        }
+
+        private void ExpandoObjectDemo_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Console.WriteLine("{0}  {1} Changed!",sender.ToString(),e.PropertyName);
         }
     }
 }
