@@ -40,9 +40,29 @@ namespace _5Async
         {
             if (cts != null)
                 cts.Cancel();
+        }       
+        /// <summary>
+        /// 直接使用async await
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        async void DisplayWebSiteLength2(object sender, EventArgs args)
+        {
+            this.label.Text = "Fetch......";
+            using (HttpClient client = new HttpClient())
+            {
+                string text = await client.GetStringAsync("http://www.sina.com");
+                label.Text = text.Length.ToString();
+            }
         }
 
-        async void DisplayWebSiteLength(object sender,EventArgs args)
+
+        /// <summary>
+        /// 使用Task并传送取消token
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        async void DisplayWebSiteLength(object sender, EventArgs args)
         {
             try
             {
@@ -54,7 +74,7 @@ namespace _5Async
 
                         return client.GetStringAsync("https://social.msdn.microsoft.com/Forums/vstudio/en-US/d3dcf07b-b2ed-4c07-9072-3d6fc018c25a/netnamedpipebinding-the-pipe-could-not-close-gracefully?forum=wcf").Result;
                     }, cts.Token);
-                    
+
                     //禁止切换到同步上下文，如果不操作UI的话，禁止切换上下文可以提高执行速度
                     //await task.ConfigureAwait(false);
                     string text = await task;

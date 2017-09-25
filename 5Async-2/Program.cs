@@ -11,7 +11,7 @@ namespace _5Async_2
         static void Main(string[] args)
         {
 
-            //MainAsync();
+            //匿名异步
             Func<Task> lambda = async () => await Task.Delay(100);
 
             Func<Task<int>> lambda2 = async () => { await Task.Delay(100); return 10; };

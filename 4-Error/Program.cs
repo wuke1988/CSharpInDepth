@@ -10,6 +10,7 @@ namespace _4_Error
     {
         private static async Task ThrowException(int ms,string message)
         {
+            Console.WriteLine("run "+message+" ......");
             await Task.Delay(ms);
             throw new Exception(message);
         }
@@ -83,7 +84,7 @@ namespace _4_Error
 
         static void Main(string[] args)
         {
-            // HandleException();
+            //HandleException();
 
             //StartTwoTaskParralle();
 
@@ -91,7 +92,10 @@ namespace _4_Error
             //StartTwoTaskParralle2();
 
 
-            StartTwoTaskParralle3();
+            //StartTwoTaskParralle3();
+
+            ExceptionDemo2 demo2 = new ExceptionDemo2();
+            demo2.MainTask();
             Console.ReadLine();
         }
     }
