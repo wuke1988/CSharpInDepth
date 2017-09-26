@@ -23,11 +23,14 @@ namespace AsyncDemo1
             //TaskWaitDemo demo4 = new TaskWaitDemo();
             //demo4.Run();
 
-            //TaskWhenAllDemo demo = new TaskWhenAllDemo();
-            //demo.Run();
+            //TaskWhenAllDemo demo5 = new TaskWhenAllDemo();
+            //demo5.Run();
 
-            TaskDelayDemo demo = new TaskDelayDemo();
-            demo.Run();
+            //TaskDelayDemo demo6 = new TaskDelayDemo();
+            //demo6.Run();
+
+            TaskYeildDemo demo7 = new TaskYeildDemo();
+            demo7.Run();
 
             Console.ReadLine();
         }
